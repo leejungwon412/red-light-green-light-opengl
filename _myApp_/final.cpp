@@ -80,7 +80,7 @@ public:
         currentState(GREEN_LIGHT),
         stateTimer(0.0f),
         dollRotationY(180.0f),
-        hBgm(0), hVoice(0),
+        hBgm(0), hVoice(0), hGunshot(0),
         leftButtonReleased(true),
         doll(nullptr), tree(nullptr)
     {
@@ -204,6 +204,9 @@ public:
         voiceSound.load("voice.mp3");
         voiceSound.setLooping(false); // 영희 음성은 단발성
 
+        gunshotSound.load("gunshot.mp3");
+        gunshotSound.setLooping(false);
+
         // 시작 시 메뉴 BGM 재생
         hBgm = soloudEngine.play(bgmSound);
 
@@ -281,6 +284,7 @@ public:
             if (currentState == RED_LIGHT && dollIsFacing && moveDist > 0.005f) {
                 gameStatus = GAMEOVER;
                 soloudEngine.stopAll();
+                hGunshot = soloudEngine.play(gunshotSound);
                 glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
             }
 
@@ -612,8 +616,10 @@ private:
     SoLoud::Soloud soloudEngine;
     SoLoud::Wav    bgmSound;
     SoLoud::Wav    voiceSound;
+    SoLoud::Wav    gunshotSound;
     SoLoud::handle hBgm;
     SoLoud::handle hVoice;
+    SoLoud::handle hGunshot;
 };
 
 DECLARE_MAIN(RedLightGame)
