@@ -28,7 +28,7 @@
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="final.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="soloud\src\audiosource\wav\dr_impl.cpp" />
     <ClCompile Include="soloud\src\audiosource\wav\soloud_wav.cpp" />
     <ClCompile Include="soloud\src\audiosource\wav\soloud_wavstream.cpp" />
